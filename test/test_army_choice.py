@@ -20,22 +20,23 @@ def choose_units(army_one, army_two):
 
     while gold_one > 0:
         try:
-            choice = input("Enter the number of the unit you want to add to your army (or 'done' when finished): ")
+            choice = input("Enter the number of the unit you want to add to your army (or 'done' when finished/for default):\n")
             choice = choice.lower()
             if choice == "done":
                 break
             elif int(choice) in range(len(unit_stats)):
                 unit = list(unit_stats.keys())[int(choice)]
-                cost = unit_stats[unit]["maintenance"]
+                number = int(input(f"How many {unit} would you like?\n"))
+                cost = unit_stats[unit]["maintenance"] * number
                 if gold_one - cost >= 0:
                     if unit in army_one:
                         gold_one -= cost
-                        army_one[unit] += 1
-                        print(f"Added {unit} to army one for {cost} gold. {gold_one} gold remaining.")
+                        army_one[unit] += number
+                        print(f"Added {number} {unit} to army one for {cost} gold. {gold_one} gold remaining.")
                     else:
                         gold_one -= cost
-                        army_one[unit] = 1
-                        print(f"Added {unit} to army one for {cost} gold. {gold_one} gold remaining.")
+                        army_one[unit] = number
+                        print(f"Added {number} {unit} to army one for {cost} gold. {gold_one} gold remaining.")
                 else:
                     print("Not enough gold. Please choose a different unit or type 'done' to finish.")
             else:
@@ -52,22 +53,23 @@ def choose_units(army_one, army_two):
 
     while gold_two > 0:
         try:
-            choice = input("Enter the number of the unit you want to add to your army (or 'done' when finished): ")
+            choice = input("Enter the number of the unit you want to add to your army (or 'done' when finished/for default):\n")
             choice = choice.lower()
             if choice == "done":
                 break
             elif int(choice) in range(len(unit_stats)):
                 unit = list(unit_stats.keys())[int(choice)]
-                cost = unit_stats[unit]["maintenance"]
+                number = int(input(f"How many {unit} would you like?\n"))
+                cost = unit_stats[unit]["maintenance"] * number
                 if gold_two - cost >= 0:
                     if unit in army_two:
                         gold_two -= cost
-                        army_two[unit] += 1
-                        print(f"Added {unit} to army two for {cost} gold. {gold_two} gold remaining.")
+                        army_two[unit] += number
+                        print(f"Added {number} {unit} to army two for {cost} gold. {gold_two} gold remaining.")
                     else:
                         gold_two -= cost
-                        army_two[unit] = 1
-                        print(f"Added {unit} to army two for {cost} gold. {gold_two} gold remaining.")
+                        army_two[unit] = number
+                        print(f"Added {number} {unit} to army two for {cost} gold. {gold_two} gold remaining.")
                 else:
                     print("Not enough gold. Please choose a different unit or type 'done' to finish.")
         except ValueError:
