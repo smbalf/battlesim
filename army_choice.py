@@ -4,8 +4,8 @@ from unit_file import unit_stats
 
 army_one = {}
 army_two = {}
-default_composition = {'archers': 1, 'light_inf': 3, 'heavy_inf': 2, 'light_cav': 1}
-#GOLD COST IS 13.1
+default_composition = {'archers': 15, 'light_inf': 10, 'heavy_inf': 10, 'light_cav': 5, 'heavy_cav': 3}
+#GOLD COST IS 100
 
 def choose_units(army_one, army_two):
     gold_one = 100
@@ -77,11 +77,11 @@ def choose_units(army_one, army_two):
     if bool(army_one) == False:
         print("Army one using default composition...")
         army_one = default_composition
-        gold_one -= 13.1
+        gold_one -= 100
     if bool(army_two) == False:
         print("Army two using default composition...")
         army_two = default_composition
-        gold_two -= 13.1
+        gold_two -= 100
 
     print("ARMY ONE", army_one)
     print("ARMY TWO", army_two)

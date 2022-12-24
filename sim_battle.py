@@ -38,12 +38,12 @@ def simulate_battle(army_one, army_two, terrain):
     day = 0
     while day < rounds:
         day += 1
-        if day <= 4:
+        if day < (rounds * 0.25):
             phase = "skirmish"
             print(f'\nDAY: {day} - Phase: {phase}')
             print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
             army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
-        elif 5 <= day < 10:
+        elif (rounds * 0.25) <= day < (rounds * 0.75):
             phase = "melee"
             print(f'\nDAY: {day} - Phase: {phase}')
             print(f'\nCasualties: {army_one_casualties} - {army_two_casualties}')
