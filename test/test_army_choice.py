@@ -77,13 +77,17 @@ def choose_units(army_one, army_two):
     
     os.system('cls')
     if bool(army_one) == False:
-        print("Army one using default composition...")
+        print("Army One using default composition...")
         army_one = default_composition
         gold_one -= 100
+    else:
+        print(f'Army One: {army_one}')
     if bool(army_two) == False:
-        print("Army two using default composition...")
+        print("Army Two using default composition...")
         army_two = default_composition
         gold_two -= 100
+    else:
+        print(f'Army Two: {army_two}')
 
     return army_one, army_two
 

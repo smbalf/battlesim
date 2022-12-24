@@ -8,14 +8,15 @@ def run_battle(army_one, army_two, chosen_terrain):
         results = simulate_battle(army_one, army_two, chosen_terrain)
 
         if results['army_one_morale'] > results['army_two_morale']:
-            print('ARMY ONE WON THE BATTLE!')
+            print(f'ARMY ONE WON THE BATTLE! - {results["days"]} days')
         elif results['army_one_morale'] == results['army_two_morale']:
-            print('THE BATTLE WAS A DRAW!')
+            print(f'THE BATTLE WAS A DRAW! - {results["days"]} days')
         else:
-            print('ARMY TWO WON THE BATTLE!')
+            print(f'ARMY TWO WON THE BATTLE! - {results["days"]} days')
 
         #print(f"\nStatistics of the battle fought on {chosen_terrain} over {results['days']} days:")
-        print(f"Morale: {results['army_one_morale']} v {results['army_two_morale']}")
+        print(f"Start morale: {results['starting_morale_one']} v {results['starting_morale_two']}")
+        print(f"End Morale: {results['army_one_morale']} v {results['army_two_morale']}")
         print(f"Casualties: {results['army_one_casualties']} v {results['army_two_casualties']}")
 
 

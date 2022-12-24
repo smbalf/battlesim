@@ -24,6 +24,9 @@ def simulate_battle(army_one, army_two, terrain):
     army_one_panic = 0.25 * army_one_morale
     army_two_panic = 0.25 * army_two_morale
 
+    starting_morale_one = army_one_morale
+    starting_morale_two = army_two_morale
+
     def battle():
         army_one_attack, army_one_defence = calc_army_stats(army_one, terrain, phase)
         army_two_attack, army_two_defence = calc_army_stats(army_two, terrain, phase)
@@ -76,8 +79,8 @@ def simulate_battle(army_one, army_two, terrain):
             defence_stats = army_one_defence / stat_factor
         
         # Calculate damage dealt to defending army
-        damage_dealt = attack_stats
-        damage_taken = defence_stats
+        damage_dealt = round(attack_stats / 2, 0)
+        damage_taken = round(defence_stats /2, 0)
         
         # Reduce defending army's morale by damage dealt
         if attack_army == army_one:
@@ -101,5 +104,7 @@ def simulate_battle(army_one, army_two, terrain):
         "army_one_casualties": round(army_one_casualties, 0),
         "army_two_casualties": round(army_two_casualties, 0), 
         "rounds": rounds,
-        "days": day
+        "days": day,
+        "starting_morale_one": starting_morale_one,
+        "starting_morale_two": starting_morale_two
         }
