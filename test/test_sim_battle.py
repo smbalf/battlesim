@@ -32,7 +32,7 @@ def simulate_battle(army_one, army_two, terrain):
         return army_one_attack, army_one_defence, army_two_attack, army_two_defence
 
     # BATTLE
-    print(f'Maximum rounds: {rounds} - Terrain: {terrain}')
+    print(f'\nTerrain: {terrain}')
     day = 0
     while day < rounds:
         day += 1
