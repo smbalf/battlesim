@@ -462,7 +462,21 @@ unit_type = "archers"
 #terrain = {}
 #print(bool(terrain))
 
-choice = input("Enter the number of the unit you want to add to your army (or 'done' when finished): ")
-choice = choice.lower()
-if choice == "done":
-    print(choice)
+day = 0 
+rounds = 20
+
+while day < rounds:
+    day += 1
+    if day % 2 == 0:
+        print("yes")
+    else:
+        print("no")
+    if day < 4:
+        print("less than four")
+        print(day)
+    elif 4 <= day < 12:
+        print("four to ten")
+        print(day)
+    else:
+        print("getting to rounds")
+        print(day)
