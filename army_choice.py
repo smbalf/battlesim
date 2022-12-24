@@ -12,7 +12,7 @@ def choose_units(army_one, army_two):
     gold_two = 100
 
     # Choose units for army one
-    print("Army one, choose your units:")
+    print(f"Army one, you have {gold_one} gold remaining. choose your units:")
     i = 0
     for unit, stats in unit_stats.items():
         print(f"{i}: {unit} (maintenance cost: {stats['maintenance']})")
@@ -44,7 +44,7 @@ def choose_units(army_one, army_two):
             print("Invalid choice. Please try again.")
 
     # Choose units for army two
-    print("\nArmy two, choose your units:")
+    print(f"\nArmy two, you have {gold_two} gold remaining. choose your units:")
     i = 0
     for unit, stats in unit_stats.items():
         print(f"{i}: {unit} (maintenance cost: {stats['maintenance']})")

@@ -3,58 +3,12 @@ from terrain_file import terrain, terrain_list
 from unit_file import unit_stats, unit_list
 from army_choice import choose_units, army_one, army_two
 from terrain_choice import choose_terrain
+from army_stat_calcs import calc_army_stats, calc_unit_stats
 
-
-def calc_unit_stats(unit_type, terrain_type):
-    # Get the integer indices for the unit and terrain
-    unit_index = unit_list.index(unit_type)
-    terrain_index = terrain_list.index(terrain_type)
-
-    # Use the integer indices to access the elements in the dictionaries
-    stats = unit_stats[unit_type]
-    print(terrain)
-    print(terrain_index)
-    print(unit_index)
-    terrain_modifiers = terrain[terrain_index][unit_index]
-    print(terrain_modifiers)
-    print(stats)
-    print(stats["attack_skirmish"])
-    
-    # Calculate the modified attack and defence values
-    attack = stats["attack_skirmish"] * terrain_modifiers["attack"]
-    defence = stats["defence_skirmish"] * terrain_modifiers["defence"]
-    
-    return attack, defence
-
-def calc_army_stats(army, terrain):
-    print(army)
-    print(terrain)
-    # Initialize attack and defence values to 0
-    attack = 0
-    defence = 0
-    
-    # Calculate total attack and defence values for the army
-    for unit, count in army.items():
-        unit_attack, unit_defence = calc_unit_stats(unit, terrain)
-        attack += count * unit_attack
-        defence += count * unit_defence
-        """
-        unit_stats = unit_stats[unit]
-        attack += count * unit_stats["attack_melee"]
-        defence += count * unit_stats["defence_melee"]
-    # Modify attack and defence values based on terrain
-    if terrain in terrain:
-        for unit, count in army.items():
-            terrain_modifiers = terrain[terrain][unit]
-            attack += count * terrain_modifiers["attack"]
-            defence += count * terrain_modifiers["defence"]
-        """
-    # Return modified attack and defence values
-    print(attack, defence)
-    return attack, defence
 
 def simulate_battle(army_one, army_two, terrain):
-    print("RUNNING SIMULATE_BATTLE")
+    os.system('cls')
+    print("RUNNING SIMULATE_BATTLE\n")
     # Initialize variables to keep track of battle stats
     army_one_morale = 0
     army_two_morale = 0
@@ -68,16 +22,16 @@ def simulate_battle(army_one, army_two, terrain):
     for unit, count in army_two.items():
         army_two_units = unit_stats[unit]
         army_two_morale += army_two_units["morale"] * count
-    
-    print(army_one_morale, army_two_morale)
+
     # Calculate attack and defence values for each army
-    print("RUNNING CALC_ARMY_STATS FOR ARMY ONE")
     army_one_attack, army_one_defence = calc_army_stats(army_one, terrain)
-    print("RUNNING CALC_ARMY_STATS FOR ARMY TWO")
     army_two_attack, army_two_defence = calc_army_stats(army_two, terrain)
-    
+    print(f'ARMY ONE - Morale: {army_one_morale} | Attack: {army_one_attack} | Defence: {army_one_defence}')
+    print(f'ARMY TWO - Morale: {army_two_morale} | Attack: {army_two_attack} | Defence: {army_two_defence}')
+
     # Calculate number of rounds needed for battle
     rounds = max(army_one_morale, army_two_morale)
+    print(f'Rounds: {rounds}')
 
     for i in range(rounds):
         if i % 2 == 0:
@@ -92,6 +46,9 @@ def simulate_battle(army_one, army_two, terrain):
             defence_stats = army_one_defence
         
         # Calculate damage dealt to defending army
+        for unit, count in attack_army.items():
+            print(attack_stats[unit])
+            print(count)
         damage_dealt = sum([count * attack_stats[unit] for unit, count in attack_army.items()])
         damage_taken = sum([count * defence_stats[unit] for unit, count in defence_army.items()])
         
