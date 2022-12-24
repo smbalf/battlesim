@@ -20,39 +20,38 @@ def calc_unit_stats(unit_type, terrain_type):
     print(stats)
     print(stats["attack_skirmish"])
     
-    # Calculate the modified attack and defense values
+    # Calculate the modified attack and defence values
     attack = stats["attack_skirmish"] * terrain_modifiers["attack"]
-    defense = stats["defense_skirmish"] * terrain_modifiers["defense"]
+    defence = stats["defence_skirmish"] * terrain_modifiers["defence"]
     
-    return attack, defense
+    return attack, defence
 
 def calc_army_stats(army, terrain):
-    print("RUNNING CALC_ARMY_STATS")
     print(army)
     print(terrain)
-    # Initialize attack and defense values to 0
+    # Initialize attack and defence values to 0
     attack = 0
-    defense = 0
+    defence = 0
     
-    # Calculate total attack and defense values for the army
+    # Calculate total attack and defence values for the army
     for unit, count in army.items():
-        unit_attack, unit_defense = calc_unit_stats(unit, terrain)
+        unit_attack, unit_defence = calc_unit_stats(unit, terrain)
         attack += count * unit_attack
-        defense += count * unit_defense
+        defence += count * unit_defence
         """
         unit_stats = unit_stats[unit]
         attack += count * unit_stats["attack_melee"]
-        defense += count * unit_stats["defense_melee"]
-    
-    # Modify attack and defense values based on terrain
+        defence += count * unit_stats["defence_melee"]
+    # Modify attack and defence values based on terrain
     if terrain in terrain:
         for unit, count in army.items():
             terrain_modifiers = terrain[terrain][unit]
             attack += count * terrain_modifiers["attack"]
-            defense += count * terrain_modifiers["defense"]
+            defence += count * terrain_modifiers["defence"]
         """
-    # Return modified attack and defense values
-    return attack, defense
+    # Return modified attack and defence values
+    print(attack, defence)
+    return attack, defence
 
 def simulate_battle(army_one, army_two, terrain):
     print("RUNNING SIMULATE_BATTLE")
@@ -71,9 +70,11 @@ def simulate_battle(army_one, army_two, terrain):
         army_two_morale += army_two_units["morale"] * count
     
     print(army_one_morale, army_two_morale)
-    # Calculate attack and defense values for each army
-    army_one_attack, army_one_defense = calc_army_stats(army_one, terrain)
-    army_two_attack, army_two_defense = calc_army_stats(army_two, terrain)
+    # Calculate attack and defence values for each army
+    print("RUNNING CALC_ARMY_STATS FOR ARMY ONE")
+    army_one_attack, army_one_defence = calc_army_stats(army_one, terrain)
+    print("RUNNING CALC_ARMY_STATS FOR ARMY TWO")
+    army_two_attack, army_two_defence = calc_army_stats(army_two, terrain)
     
     # Calculate number of rounds needed for battle
     rounds = max(army_one_morale, army_two_morale)
@@ -82,17 +83,17 @@ def simulate_battle(army_one, army_two, terrain):
         if i % 2 == 0:
             attack_army = army_one
             attack_stats = army_one_attack
-            defense_army = army_two
-            defense_stats = army_two_defense
+            defence_army = army_two
+            defence_stats = army_two_defence
         else:
             attack_army = army_two
             attack_stats = army_two_attack
-            defense_army = army_one
-            defense_stats = army_one_defense
+            defence_army = army_one
+            defence_stats = army_one_defence
         
         # Calculate damage dealt to defending army
         damage_dealt = sum([count * attack_stats[unit] for unit, count in attack_army.items()])
-        damage_taken = sum([count * defense_stats[unit] for unit, count in defense_army.items()])
+        damage_taken = sum([count * defence_stats[unit] for unit, count in defence_army.items()])
         
         # Reduce defending army's morale by damage dealt
         if attack_army == army_one:
@@ -101,7 +102,7 @@ def simulate_battle(army_one, army_two, terrain):
             army_one_morale -= damage_dealt
         
         # Reduce attacking army's morale by damage taken
-        if defense_army == army_one:
+        if defence_army == army_one:
             army_one_morale -= damage_taken
         else:
             army_two_morale -= damage_taken
