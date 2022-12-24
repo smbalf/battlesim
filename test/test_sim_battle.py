@@ -4,7 +4,7 @@ from army_stat_calcs import calc_army_stats
 
 
 def simulate_battle(army_one, army_two, terrain):
-    os.system('cls')
+    #os.system('cls')
     army_one_morale = 0
     army_two_morale = 0
     army_one_casualties = 0
@@ -27,12 +27,12 @@ def simulate_battle(army_one, army_two, terrain):
     def battle():
         army_one_attack, army_one_defence = calc_army_stats(army_one, terrain, phase)
         army_two_attack, army_two_defence = calc_army_stats(army_two, terrain, phase)
-        print(f'ARMY ONE - Morale: {round(army_one_morale, 0)} | Attack: {round(army_one_attack, 0)} | Defence: {round(army_one_defence, 0)}')
-        print(f'ARMY TWO - Morale: {round(army_two_morale, 0)} | Attack: {round(army_two_attack, 0)} | Defence: {round(army_two_defence, 0)}')
+        #print(f'ARMY ONE - Morale: {round(army_one_morale, 0)} | Attack: {round(army_one_attack, 0)} | Defence: {round(army_one_defence, 0)}')
+        #print(f'ARMY TWO - Morale: {round(army_two_morale, 0)} | Attack: {round(army_two_attack, 0)} | Defence: {round(army_two_defence, 0)}')
         return army_one_attack, army_one_defence, army_two_attack, army_two_defence
 
     # BATTLE
-    print(f'Maximum rounds: {rounds} - Terrain: {terrain}\n')
+    print(f'Maximum rounds: {rounds} - Terrain: {terrain}')
     day = 0
     while day < rounds:
         day += 1
@@ -43,24 +43,24 @@ def simulate_battle(army_one, army_two, terrain):
 
         if day <= 4:
             phase = "skirmish"
-            print(f'\nDAY: {day} - Phase: {phase}')
-            print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
+            #print(f'\nDAY: {day} - Phase: {phase}')
+            #print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
             army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
         elif day >= 5:
             if army_one_morale <= army_one_panic:
                 phase = "pursue"
-                print(f'\nDAY: {day} - Phase: {phase}')
-                print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
+                #print(f'\nDAY: {day} - Phase: {phase}')
+                #print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
                 army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
             elif army_two_morale <= army_two_panic:
                 phase = "pursue"
-                print(f'\nDAY: {day} - Phase: {phase}')
-                print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
+                #print(f'\nDAY: {day} - Phase: {phase}')
+                #print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
                 army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
             else:
                 phase = "melee"
-                print(f'\nDAY: {day} - Phase: {phase}')
-                print(f'\nCasualties: {army_one_casualties} - {army_two_casualties}')
+                #print(f'\nDAY: {day} - Phase: {phase}')
+                #print(f'\nCasualties: {army_one_casualties} - {army_two_casualties}')
                 army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
 
         stat_factor = 10
