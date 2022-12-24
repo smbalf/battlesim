@@ -1,5 +1,5 @@
 import os
-from unit_file import unit_stats
+from test_unit_file import unit_stats
 
 
 army_one = {}

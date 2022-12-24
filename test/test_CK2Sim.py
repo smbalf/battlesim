@@ -1,7 +1,7 @@
 import os
-from army_choice import choose_units, army_one, army_two
-from terrain_choice import choose_terrain, terrain_list
-from sim_battle import simulate_battle
+from test_army_choice import choose_units, army_one, army_two
+from test_terrain_choice import choose_terrain, terrain_list
+from test_sim_battle import simulate_battle
 
 def run_battle(army_one, army_two, chosen_terrain):
     for chosen_terrain in terrain_list:

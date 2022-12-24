@@ -1,4 +1,4 @@
-from terrain_file import terrain, terrain_list
+from test_terrain_file import terrain, terrain_list
 
 
 def choose_terrain():

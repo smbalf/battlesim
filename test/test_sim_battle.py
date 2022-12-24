@@ -1,6 +1,6 @@
 import os
-from unit_file import unit_stats
-from army_stat_calcs import calc_army_stats
+from test_unit_file import unit_stats
+from test_army_stat_calcs import calc_army_stats
 
 
 def simulate_battle(army_one, army_two, terrain):

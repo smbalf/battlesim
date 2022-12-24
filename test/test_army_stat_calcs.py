@@ -1,5 +1,5 @@
-from terrain_file import terrain
-from unit_file import unit_stats
+from test_terrain_file import terrain
+from test_unit_file import unit_stats
 
 
 def calc_unit_stats(unit_type, terrain_type, phase):
