@@ -1,6 +1,8 @@
 terrain,unit,attribute,value
-hill,archers,attack,0.2
+hill,archers,attack,0.3
 hill,archers,defence,0.5
+hill,crossbowmen,attack,0.3
+hill,crossbowmen,defence,0.6
 hill,light infantry,attack,0
 hill,light infantry,defence,0.3
 hill,heavy infantry,attack,0
@@ -19,6 +21,8 @@ hill,war elephants,attack,0
 hill,war elephants,defence,0
 mountain,archers,attack,0.5
 mountain,archers,defence,1
+mountain,crossbowmen,attack,0.6
+mountain,crossbowmen,defence,1.2
 mountain,light infantry,attack,0
 mountain,light infantry,defence,1
 mountain,heavy infantry,attack,0
@@ -37,6 +41,8 @@ mountain,war elephants,attack,0
 mountain,war elephants,defence,0
 fields,archers,attack,0.2
 fields,archers,defence,0.2
+fields,crossbowmen,attack,0.3
+fields,crossbowmen,defence,0.5
 fields,light infantry,attack,0.1
 fields,light infantry,defence,0.2
 fields,heavy infantry,attack,0.25
@@ -55,6 +61,8 @@ fields,war elephants,attack,0.25
 fields,war elephants,defence,0.35
 forest,archers,attack,0.2
 forest,archers,defence,0.3
+forest,crossbowmen,attack,0.1
+forest,crossbowmen,defence,0.2
 forest,light infantry,attack,0.5
 forest,light infantry,defence,0.3
 forest,heavy infantry,attack,0.1
@@ -73,6 +81,8 @@ forest,war elephants,attack,0
 forest,war elephants,defence,0
 desert,archers,attack,-0.05
 desert,archers,defence,-0.1
+desert,crossbowmen,attack,-0.05
+desert,crossbowmen,defence,-0.15
 desert,light infantry,attack,-0.1
 desert,light infantry,defence,-0.1
 desert,heavy infantry,attack,-0.15
@@ -91,6 +101,8 @@ desert,war elephants,attack,0
 desert,war elephants,defence,0
 stream,archers,attack,0.1
 stream,archers,defence,0.1
+stream,crossbowmen,attack,0.15
+stream,crossbowmen,defence,0.15
 stream,light infantry,attack,0.1
 stream,light infantry,defence,0.1
 stream,heavy infantry,attack,-0.15
@@ -109,6 +121,8 @@ stream,war elephants,attack,-0.1
 stream,war elephants,defence,-0.1
 river,archers,attack,0.15
 river,archers,defence,0.15
+river,crossbowmen,attack,0.15
+river,crossbowmen,defence,0.15
 river,light infantry,attack,0.15
 river,light infantry,defence,0.15
 river,heavy infantry,attack,-0.15
@@ -127,6 +141,8 @@ river,war elephants,attack,-0.1
 river,war elephants,defence,-0.1
 steppe,archers,attack,0.1
 steppe,archers,defence,0
+steppe,crossbowmen,attack,0.1
+steppe,crossbowmen,defence,0
 steppe,light infantry,attack,0.1
 steppe,light infantry,defence,0
 steppe,heavy infantry,attack,0
