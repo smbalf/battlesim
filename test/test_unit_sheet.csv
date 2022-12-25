@@ -8,4 +8,4 @@ light cavalry,3,15,4,2,3,6,4.5,3,4.5
 heavy cavalry,6,10,10,0.5,10,4,6,6,5
 camel cavalry,3,15,5,4,6,4,4.5,3,2.5
 horse archers,4,15,3,4,3,7,4,4,5
-war elephants,3,1,5,4,6,5,4.5,3,2.5
+war elephants,20,1,5,4,6,5,4.5,3,2.5

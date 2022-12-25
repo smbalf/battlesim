@@ -1,10 +1,10 @@
-from test_terrain_file import terrain
+from test_terrain_file import terrain_stats
 from test_unit_file import unit_stats
 
 
 def calc_unit_stats(unit_type, terrain_type, phase):
     stats = unit_stats[unit_type]
-    terrain_modifiers = terrain[terrain_type][unit_type]
+    terrain_modifiers = terrain_stats[terrain_type][unit_type]
     # Calculate the modified attack and defence values
     if phase == "skirmish":
         attack = stats["attack_skirmish"] + terrain_modifiers["attack"]
