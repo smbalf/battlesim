@@ -10,7 +10,7 @@ with open('test/test_unit_sheet.csv', 'r', encoding='utf-8-sig') as f:
         unit_data = {
             "unit_cost": int(row['unit_cost']),
             "soldiers": int(row['soldiers']),
-            "morale": int(row['morale']),
+            "morale": float(row['morale']),
             "attack_skirmish": float(row['attack_skirmish']),
             "attack_melee": float(row['attack_melee']),
             "attack_pursue": float(row['attack_pursue']),
