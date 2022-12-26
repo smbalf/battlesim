@@ -35,7 +35,7 @@ def simulate_battle(army_one, army_two, terrain):
 
     # BATTLE
     rounds = max(army_one_morale, army_two_morale)
-    
+
     day = 0
     phase_switch = 3
     battle_phases = ['skirmish', 'melee', 'pursue']
@@ -58,6 +58,7 @@ def simulate_battle(army_one, army_two, terrain):
             phase = battle_phases[2] # PURSUE
             army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
         
+
 
 
     return {

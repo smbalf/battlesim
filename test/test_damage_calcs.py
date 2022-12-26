@@ -7,19 +7,20 @@ def calc_damage(day, army_one, army_two,
     stat_factor = 2
     if day % 2 == 0:
         attack_army = army_one
-        attack_stats = ((army_one_morale / 100) * (army_one_attack / stat_factor))
+        attack_stats = 0
         defence_army = army_two
-        defence_stats = ((army_two_morale / 100) * (army_two_defence / stat_factor))
+        defence_stats = 0
     else:
         attack_army = army_two
-        attack_stats = ((army_two_morale / 100) * (army_two_attack / stat_factor))
+        attack_stats = 0
         defence_army = army_one
-        defence_stats = ((army_one_morale / 100) * (army_one_defence / stat_factor))
+        defence_stats = 0
 
-    damage_dealt = round(attack_stats, 0)
-    damage_taken = round(defence_stats, 0)
-    morale_damage_dealt = damage_dealt / 10
-    morale_damage_taken = damage_taken / 10
+    damage_dealt = 0
+    damage_taken = 0
+    morale_damage_dealt = 0
+    morale_damage_taken = 0
+    
     if attack_army == army_one:
         army_two_morale -= morale_damage_dealt
         army_two_soldiers -= damage_dealt
