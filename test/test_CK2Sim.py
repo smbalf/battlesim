@@ -7,10 +7,7 @@ def run_battle(army_one, army_two, chosen_terrain):
     for chosen_terrain in terrain_list:
         results = simulate_battle(army_one, army_two, chosen_terrain)
 
-        if results['army_one_soldiers'] > results['army_two_soldiers']:
-            print(f'\nARMY ONE WON THE BATTLE! - {results["days"]} days')
-        else:
-            print(f'\nARMY TWO WON THE BATTLE! - {results["days"]} days')
+        print(f'\n{results["winner"].upper()} WON THE BATTLE! - {results["days"]} days')
 
         print(f"Terrain: {chosen_terrain} - Max possible rounds: {results['rounds']}")
         print(f"Start morale: {results['starting_morale_one']} v {results['starting_morale_two']}")

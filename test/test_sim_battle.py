@@ -37,11 +37,17 @@ def simulate_battle(army_one, army_two, terrain):
     rounds = max(army_one_morale, army_two_morale)
 
     day = 0
-    phase_switch = 3
+    phase_switch = 4
     battle_phases = ['skirmish', 'melee', 'pursue']
     phase_type = 0
     while day < rounds:
         day += 1
+        if phase_type == 0:
+            phase = battle_phases[phase_type] # SKIRMISH
+            army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+        elif phase_type == 1:
+            phase = battle_phases[phase_type] # MELEE
+            army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
         if day % phase_switch == 0:
             if phase_type == 0:
                 phase_type += 1
@@ -58,10 +64,27 @@ def simulate_battle(army_one, army_two, terrain):
             phase = battle_phases[2] # PURSUE
             army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
         
+        army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale, damage_taken, damage_dealt, morale_damage_dealt, morale_damage_taken = calc_damage(day, army_one, army_two, army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale, army_one_attack, army_two_attack, army_one_defence, army_two_defence, army_one_panic, army_two_panic)
 
+        #print(f'DAY {day}: soldiers: {army_one_soldiers} morale:{army_one_morale} - soldiers: {army_two_soldiers} morale: {army_two_morale}')
 
+        if army_one_soldiers < 0:
+            army_one_soldiers = 0
+            winner = 'army two'
+            break
+        elif army_one_morale < 0:
+            winner = 'army two'
+            break
+        elif army_two_soldiers < 0:
+            army_two_soldiers = 0
+            winner = 'army one'
+            break
+        elif army_two_morale < 0:
+            winner = 'army one'
+            break
 
     return {
+        "winner": winner,
         "army_one_morale": round(army_one_morale, 0), 
         "army_two_morale": round(army_two_morale, 0),
         "rounds": rounds,
