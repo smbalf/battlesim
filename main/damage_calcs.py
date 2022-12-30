@@ -1,5 +1,5 @@
 
-def calc_damage(day, army_one, army_two, 
+def calc_damage(battle_round, army_one, army_two, 
                 army_one_soldiers, army_two_soldiers,
                 army_one_morale, army_two_morale, 
                 army_one_attack, army_two_attack,
@@ -23,7 +23,7 @@ def calc_damage(day, army_one, army_two,
         army_two_defence /= 8 
 
     # CHOOSING ATTACKER (SWITCHES EVERY SECOND ROUND)
-    if day % 2 == 0:
+    if battle_round % 2 == 0:
         attack_army = army_one
         attacker_att_stats = army_one_attack
         attacker_def_stats = army_one_defence
