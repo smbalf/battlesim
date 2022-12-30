@@ -59,4 +59,4 @@ def calc_damage(battle_round, army_one, army_two,
         army_two_morale -= morale_damage_taken
         army_two_soldiers -= damage_taken
 
-    return army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale, damage_taken, damage_dealt, morale_damage_dealt, morale_damage_taken
+    return army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale

@@ -6,19 +6,16 @@ from sim_battle import simulate_battle
 def run_battle(army_one, army_two, chosen_terrain):
     results = simulate_battle(army_one, army_two, chosen_terrain)
 
-    if results['army_one_morale'] > results['army_two_morale']:
-        print('\nARMY ONE WON THE BATTLE!')
-    elif results['army_one_morale'] == results['army_two_morale']:
-        print('\nTHE BATTLE WAS A DRAW!')
+    if results['winner']:
+        print(f'\n{results["winner"].upper()} WON THE BATTLE FOUGHT OVER {results["battle_round"]} ROUNDS!')
     else:
-        print('\nARMY TWO WON THE BATTLE!')
+        print(f'\nTHE BATTLE WAS A DRAW FOUGHT OVER {results["battle_round"]} ROUNDS!')
 
-    print(f"Final stats of the battle fought on {chosen_terrain} over {results['days']} days:")
-    print(f"- Army One morale: {results['army_one_morale']}")
-    print(f"- Army Two morale: {results['army_two_morale']}")
-    print(f"- Army One casualties: {results['army_one_casualties']}")
-    print(f"- Army Two casualties: {results['army_two_casualties']}")
-
+    print(f"\nTerrain: {chosen_terrain} - Max possible rounds: {results['rounds']}")
+    print(f"Start morale: {results['starting_morale_one']} v {results['starting_morale_two']}")
+    print(f"End Morale: {results['army_one_morale']} v {results['army_two_morale']}")
+    print(f"Start soldiers: {results['starting_soldiers_one']} v {results['starting_soldiers_two']}")
+    print(f"End soldiers: {results['army_one_soldiers']} v {results['army_two_soldiers']}")
 
 # RUNNING BATTLE SIMULATOR
 os.system('cls')

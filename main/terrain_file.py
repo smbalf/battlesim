@@ -4,7 +4,7 @@ import csv
 terrain_stats = {}
 
 # Open the CSV file and read the contents
-with open('mainn/terrain_sheet.csv', 'r', encoding='utf-8-sig') as f:
+with open('main/terrain_sheet.csv', 'r', encoding='utf-8-sig') as f:
     reader = csv.DictReader(f)
     # Iterate over the rows in the CSV file
     for row in reader:

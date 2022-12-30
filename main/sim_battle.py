@@ -84,7 +84,7 @@ def simulate_battle(army_one, army_two, terrain):
             break
         else:
             winner = False
-            break
+
 
     return {
         "winner": winner,
