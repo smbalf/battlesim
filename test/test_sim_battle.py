@@ -20,8 +20,8 @@ def simulate_battle(army_one, army_two, terrain):
         army_two_morale += army_two_units['morale'] * count
         army_two_soldiers += army_two_units['soldiers'] * count
  
-    army_one_panic = 0.25 * army_one_morale
-    army_two_panic = 0.25 * army_two_morale
+    army_one_panic = 0.35 * army_one_morale
+    army_two_panic = 0.35 * army_two_morale
 
     starting_morale_one = army_one_morale
     starting_morale_two = army_two_morale
@@ -57,16 +57,17 @@ def simulate_battle(army_one, army_two, terrain):
                 phase_type -= 1
                 phase = battle_phases[phase_type] # MELEE
                 army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+
         if army_one_morale <= army_one_panic:
             phase = battle_phases[2] # PURSUE
             army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
         elif army_two_morale <= army_two_panic:
             phase = battle_phases[2] # PURSUE
             army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
-        
+
+        #print(f'DAY {day}: {phase.upper()}') #soldiers: {army_one_soldiers} morale:{army_one_morale} - soldiers: {army_two_soldiers} morale: {army_two_morale}')
         army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale, damage_taken, damage_dealt, morale_damage_dealt, morale_damage_taken = calc_damage(day, army_one, army_two, army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale, army_one_attack, army_two_attack, army_one_defence, army_two_defence, army_one_panic, army_two_panic)
 
-        #print(f'DAY {day}: soldiers: {army_one_soldiers} morale:{army_one_morale} - soldiers: {army_two_soldiers} morale: {army_two_morale}')
 
         if army_one_soldiers < 0:
             army_one_soldiers = 0
@@ -82,6 +83,8 @@ def simulate_battle(army_one, army_two, terrain):
         elif army_two_morale < 0:
             winner = 'army one'
             break
+        else:
+            winner = False
 
     return {
         "winner": winner,
