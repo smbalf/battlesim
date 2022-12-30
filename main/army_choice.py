@@ -4,7 +4,7 @@ from unit_file import unit_stats
 
 army_one = {}
 army_two = {}
-default_composition = {'archers': 15, 'light_inf': 10, 'heavy_inf': 10, 'light_cav': 5, 'heavy_cav': 3}
+default_composition = {'archers': 15, 'light infantry': 10, 'heavy infantry': 10, 'light cavalry': 5, 'heavy cavalry': 3}
 #GOLD COST IS 100
 
 def choose_units(army_one, army_two):
@@ -15,7 +15,7 @@ def choose_units(army_one, army_two):
     print(f"Army one, you have {gold_one} gold remaining. choose your units:")
     i = 0
     for unit, stats in unit_stats.items():
-        print(f"{i}: {unit} (maintenance cost: {stats['maintenance']})")
+        print(f"{i}: {unit} (unit cost: {stats['unit_cost']})")
         i += 1
 
     while gold_one > 0:
@@ -27,7 +27,7 @@ def choose_units(army_one, army_two):
             elif int(choice) in range(len(unit_stats)):
                 unit = list(unit_stats.keys())[int(choice)]
                 number = int(input(f"How many {unit} would you like?\n"))
-                cost = unit_stats[unit]["maintenance"] * number
+                cost = unit_stats[unit]["unit_cost"] * number
                 if gold_one - cost >= 0:
                     if unit in army_one:
                         gold_one -= cost
@@ -48,7 +48,7 @@ def choose_units(army_one, army_two):
     print(f"\nArmy two, you have {gold_two} gold remaining. choose your units:")
     i = 0
     for unit, stats in unit_stats.items():
-        print(f"{i}: {unit} (maintenance cost: {stats['maintenance']})")
+        print(f"{i}: {unit} (unit_cost cost: {stats['unit_cost']})")
         i += 1
 
     while gold_two > 0:
@@ -60,7 +60,7 @@ def choose_units(army_one, army_two):
             elif int(choice) in range(len(unit_stats)):
                 unit = list(unit_stats.keys())[int(choice)]
                 number = int(input(f"How many {unit} would you like?\n"))
-                cost = unit_stats[unit]["maintenance"] * number
+                cost = unit_stats[unit]["unit_cost"] * number
                 if gold_two - cost >= 0:
                     if unit in army_two:
                         gold_two -= cost
@@ -77,13 +77,17 @@ def choose_units(army_one, army_two):
     
     os.system('cls')
     if bool(army_one) == False:
-        print("Army one using default composition...")
+        print("Army One using default composition...")
         army_one = default_composition
         gold_one -= 100
+    else:
+        print(f'Army One: {army_one}')
     if bool(army_two) == False:
-        print("Army two using default composition...")
+        print("Army Two using default composition...")
         army_two = default_composition
         gold_two -= 100
+    else:
+        print(f'Army Two: {army_two}')
 
     return army_one, army_two
 
