@@ -1,105 +1,101 @@
 import os
 from unit_file import unit_stats
 from army_stat_calcs import calc_army_stats
+from damage_calcs import calc_damage
 
 
 def simulate_battle(army_one, army_two, terrain):
-    os.system('cls')
     army_one_morale = 0
     army_two_morale = 0
-    army_one_casualties = 0
-    army_two_casualties = 0
+    army_one_soldiers = 0
+    army_two_soldiers = 0
 
-    # Calculate total morale for each army
     for unit, count in army_one.items():
         army_one_units = unit_stats[unit]
-        army_one_morale += army_one_units["morale"] * count
+        army_one_morale += army_one_units['morale'] * count
+        army_one_soldiers += army_one_units['soldiers'] * count
 
     for unit, count in army_two.items():
         army_two_units = unit_stats[unit]
-        army_two_morale += army_two_units["morale"] * count
+        army_two_morale += army_two_units['morale'] * count
+        army_two_soldiers += army_two_units['soldiers'] * count
+ 
+    army_one_panic = 0.35 * army_one_morale
+    army_two_panic = 0.35 * army_two_morale
 
-    rounds = max(army_one_morale, army_two_morale)
+    starting_morale_one = army_one_morale
+    starting_morale_two = army_two_morale
+    starting_soldiers_one = army_one_soldiers
+    starting_soldiers_two = army_two_soldiers
 
-    army_one_panic = 0.25 * army_one_morale
-    army_two_panic = 0.25 * army_two_morale
-
-    def battle():
+    def calc_battle_stats():
         army_one_attack, army_one_defence = calc_army_stats(army_one, terrain, phase)
         army_two_attack, army_two_defence = calc_army_stats(army_two, terrain, phase)
-        print(f'ARMY ONE - Morale: {round(army_one_morale, 0)} | Attack: {round(army_one_attack, 0)} | Defence: {round(army_one_defence, 0)}')
-        print(f'ARMY TWO - Morale: {round(army_two_morale, 0)} | Attack: {round(army_two_attack, 0)} | Defence: {round(army_two_defence, 0)}')
         return army_one_attack, army_one_defence, army_two_attack, army_two_defence
 
     # BATTLE
-    print(f'Maximum rounds: {rounds} - Terrain: {terrain}\n')
-    day = 0
-    while day < rounds:
-        day += 1
-        if army_one_morale < 0:
+    rounds = max(army_one_morale, army_two_morale)
+
+    battle_round = 0
+    phase_switch = 4
+    battle_phases = ['skirmish', 'melee', 'pursue']
+    phase_type = 0
+    while battle_round < rounds:
+        battle_round += 1
+        if phase_type == 0:
+            phase = battle_phases[phase_type] # SKIRMISH
+            army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+        elif phase_type == 1:
+            phase = battle_phases[phase_type] # MELEE
+            army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+        if battle_round % phase_switch == 0:
+            if phase_type == 0:
+                phase_type += 1
+                phase = battle_phases[phase_type] # SKIRMISH
+                army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+            elif phase_type == 1:
+                phase_type -= 1
+                phase = battle_phases[phase_type] # MELEE
+                army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+
+        if army_one_morale <= army_one_panic:
+            phase = battle_phases[2] # PURSUE
+            army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+        elif army_two_morale <= army_two_panic:
+            phase = battle_phases[2] # PURSUE
+            army_one_attack, army_one_defence, army_two_attack, army_two_defence = calc_battle_stats()
+
+        army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale = calc_damage(battle_round, army_one, army_two, army_one_soldiers, army_two_soldiers, army_one_morale, army_two_morale, army_one_attack, army_two_attack, army_one_defence, army_two_defence, army_one_panic, army_two_panic)
+
+
+        if army_one_soldiers < 0:
+            army_one_soldiers = 0
+            winner = 'army two'
             break
-        if army_two_morale < 0:
+        elif army_one_morale < 0:
+            winner = 'army two'
+            break
+        elif army_two_soldiers < 0:
+            army_two_soldiers = 0
+            winner = 'army one'
+            break
+        elif army_two_morale < 0:
+            winner = 'army one'
+            break
+        else:
+            winner = False
             break
 
-        if day <= 4:
-            phase = "skirmish"
-            print(f'\nDAY: {day} - Phase: {phase}')
-            print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
-            army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
-        elif day >= 5:
-            if army_one_morale <= army_one_panic:
-                phase = "pursue"
-                print(f'\nDAY: {day} - Phase: {phase}')
-                print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
-                army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
-            elif army_two_morale <= army_two_panic:
-                phase = "pursue"
-                print(f'\nDAY: {day} - Phase: {phase}')
-                print(f'Casualties: {army_one_casualties} - {army_two_casualties}')
-                army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
-            else:
-                phase = "melee"
-                print(f'\nDAY: {day} - Phase: {phase}')
-                print(f'\nCasualties: {army_one_casualties} - {army_two_casualties}')
-                army_one_attack, army_one_defence, army_two_attack, army_two_defence = battle()
-
-        stat_factor = 10
-        if day % 2 == 0:
-            attack_army = army_one
-            attack_stats = army_one_attack / stat_factor
-            defence_army = army_two
-            defence_stats = army_two_defence / stat_factor
-        else:
-            attack_army = army_two
-            attack_stats = army_two_attack / stat_factor
-            defence_army = army_one
-            defence_stats = army_one_defence / stat_factor
-        
-        # Calculate damage dealt to defending army
-        damage_dealt = attack_stats
-        damage_taken = defence_stats
-        
-        # Reduce defending army's morale by damage dealt
-        if attack_army == army_one:
-            army_two_morale -= damage_dealt
-        else:
-            army_one_morale -= damage_dealt
-        
-        # Reduce attacking army's morale by damage taken
-        if defence_army == army_one:
-            army_one_morale -= damage_taken
-        else:
-            army_two_morale -= damage_taken
-        # Calculate casualties for each army
-        army_one_casualties += round(damage_taken / army_one_units["morale"], 0)
-        army_two_casualties += round(damage_dealt / army_two_units["morale"], 0)
-
-        # Return the results of the battle
     return {
+        "winner": winner,
         "army_one_morale": round(army_one_morale, 0), 
         "army_two_morale": round(army_two_morale, 0),
-        "army_one_casualties": round(army_one_casualties, 0),
-        "army_two_casualties": round(army_two_casualties, 0), 
         "rounds": rounds,
-        "days": day
+        "battle_round": battle_round,
+        "starting_morale_one": starting_morale_one,
+        "starting_morale_two": starting_morale_two,
+        "starting_soldiers_one": starting_soldiers_one,
+        "starting_soldiers_two": starting_soldiers_two,
+        "army_one_soldiers": army_one_soldiers,
+        "army_two_soldiers": army_two_soldiers
         }
