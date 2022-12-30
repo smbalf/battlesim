@@ -1,0 +1,141 @@
+terrain,unit,attribute,value
+hill,archers,attack,0.3
+hill,archers,defence,0.5
+hill,crossbowmen,attack,0.3
+hill,crossbowmen,defence,0.6
+hill,light infantry,attack,0.3
+hill,light infantry,defence,0.4
+hill,heavy infantry,attack,0
+hill,heavy infantry,defence,0.2
+hill,pikemen,attack,0.1
+hill,pikemen,defence,0.2
+hill,light cavalry,attack,0
+hill,light cavalry,defence,0
+hill,heavy cavalry,attack,-0.15
+hill,heavy cavalry,defence,-0.15
+hill,camel cavalry,attack,-0.15
+hill,camel cavalry,defence,-0.15
+hill,horse archers,attack,0.1
+hill,horse archers,defence,0
+hill,war elephants,attack,-0.2
+hill,war elephants,defence,-0.2
+mountain,archers,attack,0.5
+mountain,archers,defence,1
+mountain,crossbowmen,attack,0.6
+mountain,crossbowmen,defence,1.2
+mountain,light infantry,attack,1
+mountain,light infantry,defence,1.25
+mountain,heavy infantry,attack,0.25
+mountain,heavy infantry,defence,0.5
+mountain,pikemen,attack,0
+mountain,pikemen,defence,0.25
+mountain,light cavalry,attack,-0.25
+mountain,light cavalry,defence,-0.25
+mountain,heavy cavalry,attack,-0.25
+mountain,heavy cavalry,defence,-0.25
+mountain,camel cavalry,attack,-0.25
+mountain,camel cavalry,defence,-0.25
+mountain,horse archers,attack,-0.25
+mountain,horse archers,defence,-0.25
+mountain,war elephants,attack,-1
+mountain,war elephants,defence,-1
+fields,archers,attack,0.2
+fields,archers,defence,0.2
+fields,crossbowmen,attack,0.3
+fields,crossbowmen,defence,0.3
+fields,light infantry,attack,0.1
+fields,light infantry,defence,0.1
+fields,heavy infantry,attack,0.25
+fields,heavy infantry,defence,0.25
+fields,pikemen,attack,0.15
+fields,pikemen,defence,0.15
+fields,light cavalry,attack,0.25
+fields,light cavalry,defence,0.25
+fields,heavy cavalry,attack,0.5
+fields,heavy cavalry,defence,0.5
+fields,camel cavalry,attack,0.2
+fields,camel cavalry,defence,0.25
+fields,horse archers,attack,0.25
+fields,horse archers,defence,0.25
+fields,war elephants,attack,1
+fields,war elephants,defence,1
+forest,archers,attack,0.5
+forest,archers,defence,0.75
+forest,crossbowmen,attack,0.25
+forest,crossbowmen,defence,0.5
+forest,light infantry,attack,1
+forest,light infantry,defence,1
+forest,heavy infantry,attack,0.15
+forest,heavy infantry,defence,0.25
+forest,pikemen,attack,0.1
+forest,pikemen,defence,0.1
+forest,light cavalry,attack,0
+forest,light cavalry,defence,0
+forest,heavy cavalry,attack,-0.5
+forest,heavy cavalry,defence,-0.5
+forest,camel cavalry,attack,-0.25
+forest,camel cavalry,defence,-0.25
+forest,horse archers,attack,-0.25
+forest,horse archers,defence,-0.25
+forest,war elephants,attack,-1
+forest,war elephants,defence,-1
+desert,archers,attack,-0.05
+desert,archers,defence,-0.1
+desert,crossbowmen,attack,-0.05
+desert,crossbowmen,defence,-0.15
+desert,light infantry,attack,-0.1
+desert,light infantry,defence,-0.1
+desert,heavy infantry,attack,-0.15
+desert,heavy infantry,defence,-0.15
+desert,pikemen,attack,-0.15
+desert,pikemen,defence,-0.15
+desert,light cavalry,attack,-0.125
+desert,light cavalry,defence,-0.125
+desert,heavy cavalry,attack,-0.15
+desert,heavy cavalry,defence,-0.15
+desert,camel cavalry,attack,1.25
+desert,camel cavalry,defence,1.25
+desert,horse archers,attack,-0.075
+desert,horse archers,defence,-0.125
+desert,war elephants,attack,0
+desert,war elephants,defence,0
+stream,archers,attack,0.5
+stream,archers,defence,0.75
+stream,crossbowmen,attack,0.5
+stream,crossbowmen,defence,0.75
+stream,light infantry,attack,0.1
+stream,light infantry,defence,0.1
+stream,heavy infantry,attack,-0.15
+stream,heavy infantry,defence,-0.15
+stream,pikemen,attack,-0.15
+stream,pikemen,defence,-0.15
+stream,light cavalry,attack,-0.2
+stream,light cavalry,defence,-0.2
+stream,heavy cavalry,attack,-0.3
+stream,heavy cavalry,defence,-0.3
+stream,camel cavalry,attack,-0.3
+stream,camel cavalry,defence,-0.3
+stream,horse archers,attack,0.1
+stream,horse archers,defence,0.1
+stream,war elephants,attack,-1
+stream,war elephants,defence,-1
+steppe,archers,attack,0.1
+steppe,archers,defence,0
+steppe,crossbowmen,attack,0.1
+steppe,crossbowmen,defence,0
+steppe,light infantry,attack,0.1
+steppe,light infantry,defence,-0.1
+steppe,heavy infantry,attack,-0.1
+steppe,heavy infantry,defence,-0.1
+steppe,pikemen,attack,-0.1
+steppe,pikemen,defence,-0.2
+steppe,light cavalry,attack,0.25
+steppe,light cavalry,defence,0.25
+steppe,heavy cavalry,attack,0.1
+steppe,heavy cavalry,defence,0.1
+steppe,camel cavalry,attack,0.3
+steppe,camel cavalry,defence,0.3
+steppe,horse archers,attack,1.5
+steppe,horse archers,defence,1.5
+steppe,war elephants,attack,0
+steppe,war elephants,defence,0
