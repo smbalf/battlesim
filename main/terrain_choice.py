@@ -1,9 +1,9 @@
-from terrain_file import terrain, terrain_list
+from terrain_file import terrain_stats, terrain_list
 
 
 def choose_terrain():
     print("Choose the terrain for the battle:")
-    for i, t in enumerate(terrain.keys()):
+    for i, t in enumerate(terrain_stats.keys()):
         print(f"{i}: {t}")
     terrain_choice = input("Choose the terrain for the battle: ")
     try:
